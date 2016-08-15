@@ -1,0 +1,61 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<h1>Калькулятор 0.1</h1>
+</head>
+
+<body>
+<br>
+height:<input type="text" id="height"> 
+length:<input type="text" id="length">
+
+<br>
+height_in:<span id="height_in">0</span> 
+length_in:<span id="length_in">0</span> 
+
+<br>
+copy_on_bord:<span id="ekz">0</span> 
+
+
+<script>
+function ekz_na_liste(h, l) {
+var height_bord = 420;
+var length_bord = 300;
+var hc1 = Math.floor(height_bord/h);
+var hc2 = Math.floor(length_bord/h);
+var lc1 = Math.floor(length_bord/l);
+var lc2 = Math.floor(height_bord/l);
+var hl1 = hc1*lc1;
+var hl2 = hc2*lc2;
+
+if (hl1>hl2) {
+	ekz = hl1;
+}
+else {
+	ekz = hl2;
+}
+
+return(ekz);
+}
+
+var height = document.querySelector("#height");
+var length = document.querySelector("#length"); 
+var output_h = document.querySelector("#height_in");
+var output_l = document.querySelector("#length_in");
+var ekz = document.querySelector("#ekz");
+
+height.addEventListener("change",function(){
+output_h.textContent = height.value;
+ekz.textContent = ekz_na_liste(height.value, length.value);
+}) 
+
+length.addEventListener("change",function(){
+output_l.textContent = length.value;
+ekz.textContent = ekz_na_liste(height.value, length.value);
+})
+
+</script>
+</body>
+
+</html>
